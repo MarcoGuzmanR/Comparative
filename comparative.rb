@@ -1,4 +1,4 @@
-class Comparator
+class Comparative
 
   def initialize(first, second)
     @first  = first
