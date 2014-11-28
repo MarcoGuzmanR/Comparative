@@ -24,15 +24,13 @@ class Comparator
       words << [v1, v2] unless v1.nil? && v2.nil?
     end
 
-    words.each_with_index do | value, index |
-      print ((index + 1) % 3 == 0) ? "#{ value }\n" : "#{ value } "
-    end
-
+    print_coincidences(calc_diff(words))
   end
 
   private
 
   def set_words(file_path)
+    raise 'Invalid path' if file_path.empty?
     return File.readlines(file_path).each { |val| val.delete!("\n") }
   end
 
@@ -55,6 +53,12 @@ class Comparator
       end
     end
     return values
+  end
+
+  def print_coincidences(diff)
+    diff.each_with_index do | value, index |
+      print ((index + 1) % 3 == 0) ? "#{ value }\n" : "#{ value } "
+    end
   end
 
 end
